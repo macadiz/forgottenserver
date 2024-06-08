@@ -153,6 +153,8 @@ void ServicePort::open(uint16_t port)
 	try {
 		auto address = getListenAddress();
 
+		std::cout << "This is address" + address.to_string();
+
 		acceptor = std::make_unique<ip::tcp::acceptor>(io_context, ip::tcp::endpoint{address, serverPort});
 		if (address.is_v6()) {
 			ip::v6_only option;
