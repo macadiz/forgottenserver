@@ -86,7 +86,7 @@ std::pair<status, json::value> tfs::http::handle_login(const json::object& body,
 
 	std::string sessionKey = randomBytes(16);
 	if (!db.executeQuery(
-	        fmt::format("INSERT INTO `sessions` (`token`, `account_id`, `ip`) VALUES ({:s}, {:d}, INET6_ATON({:s}))",
+	        fmt::format("INSERT INTO `sessions` (`token`, `account_id`, `ip`) VALUES ({:s}, {:d}, INET6_ATON('{:s}'))",
 	                    db.escapeString(sessionKey), accountId, db.escapeString(ip)))) {
 		return make_error_response();
 	}
